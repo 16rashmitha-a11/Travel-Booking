@@ -1,0 +1,25 @@
+<!-- templates/booking_system/trip_detail.html -->
+{% extends 'booking_system/base.html' %}
+
+{% block content %}
+    <div class="bg-white p-8 rounded-lg shadow-xl mb-6">
+        <h2 class="text-4xl font-semibold text-blue-700 mb-4">{{ trip.trip_name }}</h2>
+        <!-- Trip Image -->
+        <img src="{{ trip.trip_image }}" alt="{{ trip.trip_name }}" class="w-full h-screen object-cover rounded-lg">
+
+        
+        <p class="text-lg mb-2"><strong>Destination:</strong> {{ trip.destination }}</p>
+        <p class="text-lg mb-2"><strong>Departure Date:</strong> {{ trip.departure_date }}</p>
+        <p class="text-lg mb-2"><strong>Return Date:</strong> {{ trip.return_date }}</p>
+        <p class="text-lg mb-4"><strong>Price per person:</strong> ₹{{ trip.price_per_person }}</p>
+
+        <h3 class="text-2xl font-semibold text-blue-700 mb-4">Book a Ticket</h3>
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                Book Ticket
+            </button>
+        </form>
+    </div>
+{% endblock %}

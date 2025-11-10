@@ -1,0 +1,17 @@
+
+<!-- templates/booking_system/ticket_detail.html -->
+{% extends 'booking_system/base.html' %}
+
+{% block content %}
+    <div class="bg-white p-8 rounded-lg shadow-xl mb-6">
+        <h2 class="text-4xl font-semibold text-blue-700 mb-4">Ticket for {{ ticket.customer.first_name }} {{ ticket.customer.last_name }}</h2>
+        <p class="text-lg mb-2"><strong>Trip:</strong> {{ ticket.trip.trip_name }} - {{ ticket.trip.destination }}</p>
+        <p class="text-lg mb-2"><strong>Booking Date:</strong> {{ ticket.booking_date }}</p>
+        <p class="text-lg mb-2"><strong>Total Price:</strong> ₹{{ ticket.total_price }}</p>
+        <p class="text-lg mb-4"><strong>Status:</strong> {{ ticket.status }}</p>
+
+        <a href="{% url 'booking_system:trip_list' %}" class="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition mt-4 inline-block">
+            Back to Trips
+        </a>
+    </div>
+{% endblock %}
